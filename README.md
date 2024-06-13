@@ -213,3 +213,5 @@ The two groups I will choose are severe weather and intentional attack.
 **Alternative Hypothesis**: Our model is unfair. Its performance for intentional attack is lower than its performance for severe weather.
 
 The permutation test had 100 trials, where the observed difference is 1977.522 with a p-value of 0.0. Therefore, I reject the null hypothesis and can say that our model is unfair that it performs worse on intentional attacks than severe weather outages.
+
+💀
