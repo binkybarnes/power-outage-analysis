@@ -106,6 +106,8 @@ To see if `DEMAND.LOSS.MW` could be MAR, I would investigate if there is a depen
 
 ### Missingness Dependency
 
+#### Finding a MAR column
+
 Now I want to find a column that is MAR. I will select `CAUSE.CATEGORY.DETAIL` because I believe whether it is missing depends on `CAUSE.CATEGORY`, since there might not be a need for more detail if the category is sufficient enough.
 
 **Null Hypothesis**: The distribution of `CAUSE.CATEGORY` is the same whether or not `CAUSE.CATEGORY.DETAIL` is missing.
@@ -114,8 +116,6 @@ Now I want to find a column that is MAR. I will select `CAUSE.CATEGORY.DETAIL` b
 
 **Test Statistic**: TVD since categorical and two sided.
 
-The observed TVD is 0.2885925544217483, and I found a p-value of 0.0. Therefore, we have enough evidence to reject the null. Detail missing is likely to be MAR on cause category.
-
 <iframe
   src="assets/missing-plot1.html"
   width="800"
@@ -123,9 +123,23 @@ The observed TVD is 0.2885925544217483, and I found a p-value of 0.0. Therefore,
   frameborder="0"
 ></iframe>
 
+The observed TVD is 0.2885925544217483, and I found a p-value of 0.0. Therefore, we have enough evidence to reject the null. Detail missing is likely to be MAR on cause category.
+
+#### Finding a not MAR column
+
+Now I want to find a column's whose missingess is not dependent on another column. I will show that the missingness of `DEMAND.LOSS.MW` is not dependent on `RES.PERCEN`, since `DEMAND.LOSS.MW` is also a measure of severity.
+
+**Null Hypothesis**: The distribution of `CAUSE.CATEGORY` is the same whether or not `DEMAND.LOSS.MW` is missing.
+
+**Alternate Hypothesis**: The distribution of `CAUSE.CATEGORY` is different when `CAUSE.CATEGORY.DETAIL` is missing.
+
+**Test Statistic**: Difference of means
+
 <iframe
   src="assets/missing-plot2.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+Observed difference in mean 0.08070380363253488, with a p-value of 1.0. Therefore we can say that the missingness of `DEMAND.LOSS.MW` is not dependent on `RES.PERCEN`.
