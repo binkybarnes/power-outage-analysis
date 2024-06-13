@@ -42,3 +42,21 @@ Here is the first few rows of the cleaned DataFrame
 | 4 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00 | 5 | 2015 | 7 | Minnesota | MN | MRO | East North Central | 1.2 | warm | severe weather | nan | nan | 1740 | 250 | 250000 | 13.07 | 10.16 | 7.74 | 10.43 | 2.02888e+06 | 2.16161e+06 | 1.77794e+06 | 5.97034e+06 | 33.9826 | 36.2059 | 29.7795 | 2374674 | 289044 | 9812 | 2673531 | 88.8216 | 10.8113 | 0.367005 | 54431 | 49844 | 1.09203 | 1.7 | 4873 | 292023 | 1.6687 | 2.2 | 5489594 | 73.27 | 15.28 | 2279 | 1700.5 | 18.2 | 2.14 | 0.6 | 91.5927 | 8.40733 | 5.47874 |
 
 ### Univariate Analysis
+
+Let's look at the `OUTAGE.DURATION` distribution since that is what we are trying to predict.
+
+<iframe
+  src="assets/uni-plot1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+I had a strong feeling that the outage cause category would be significant in predicting outage duration. Let's look at a barplot of outage causes.
+
+<iframe
+  src="assets/uni-plot2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
