@@ -191,4 +191,25 @@ I trained the random forest and got a mean absolute error of 1835.537. I do not 
 
 ### Feature Selection and Grid CV
 
-rraa
+I wanted to make two new features based on `CUSTOMERS.AFFECTED` `TOTAL.CUSTOMERS`.
+
+The customers affected column is heavily dependent on the population of the area, so I needed a way to standardize the counts. I will use StandardScaler to turn the column into z-scores. As for the significance of this feature, I belive that if there are more customers affected, that might indicate that the outage might last longer.
+
+The total customers column follows a similar situation, but it has greater variation and more outliers. Therefore, I decided to use QuantileTransformer. This feature should be added since it can be correlated with outage duration more effectively.
+
+The modeling algorithm I chose is RandomForestRegressor. One of the hyperparameters I chose for GridCV is max-depth, which wound up to be 12. My criterion remained absolute error.
+
+This model has achieved a mean absolute error of 1588.775 on the training set. Compared to my baseline 1835.537, this is a moderate improvement to the baseline model, since it narrows down the time frame by 5 hours.
+
+## Fairness Analysis
+
+### Differences in MAE
+
+To evaluate my model for fairness, I will choose two groups and determine whether my model performs better on one group over the other. I will use a permutation test with the differences in mean absolute error as the metric.
+
+The two groups I will choose are severe weather and intentional attack.
+
+**Null Hypothesis**: Our model is fair. Its performance for severe weather and intentional attack outages are roughly the same, and any differences are due to random chance.
+**Alternative Hypothesis**: Our model is unfair. Its performance for intentional attack is lower than its performance for severe weather.
+
+The permutation test had 100 trials, where the observed difference is 1977.522 with a p-value of 0.0. Therefore, I reject the null hypothesis and can say that our model is unfair that it performs worse on intentional attacks than severe weather outages.
