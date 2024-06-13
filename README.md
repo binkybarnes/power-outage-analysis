@@ -77,7 +77,7 @@ I wanted to observe any possible correlation between `CAUSE.CATEOGORY` and outag
   frameborder="0"
 ></iframe>
 
-Severe weather seems to have a very concentrated distribution with high outage durations. Also, Intentional attack has the widest distribution.
+Severe weather seems to have a very concentrated distribution with high outage durations. Also, intentional attack has the widest distribution.
 
 Let's visualize the average outage duration for each state.
 
@@ -91,3 +91,19 @@ Let's visualize the average outage duration for each state.
 Looks like east mid west has longer outages.
 
 ### Interesting Aggregates
+
+Let's make a pivot table of cause category to features associated with outage severeness. I wanted to see if these three features have similar distributions to each other to help my model feature selection.
+
+| CAUSE.CATEGORY | CUSTOMERS.AFFECTED | DEMAND.LOSS.MW | OUTAGE.DURATION |\n|:------------------------------|---------------------:|-----------------:|------------------:|\n| equipment failure | 101936 | 372.4 | 1816.91 |\n| fuel supply emergency | 0.142857 | 540.222 | 13484 |\n| intentional attack | 1790.53 | 9.15135 | 429.98 |\n| islanding | 6169.09 | 396.564 | 200.545 |\n| public appeal | 7618.76 | 1784.93 | 1468.45 |\n| severe weather | 188575 | 618.662 | 3883.99 |\n| system operability disruption | 211066 | 928.905 | 728.87 |
+
+## Assessment of Missingness
+
+### NMAR Analysis
+
+`DEMAND.LOSS.MW` is likely to be NMAR because the main use for that column is to assess the money lost. However, if it was a small outage, then there is less of a need to report it. Because the missing data is influenced by the magnitude of the outage and its perceived importance, it is not missing at random.
+
+To see if `DEMAND.LOSS.MW` could be MAR, I would investigate if there is a dependency on CUSTOMERS.AFFECTED, since I believe the amount of energy lost would be more important when it involves a lot of customers.
+
+### Missingness Dependency
+
+Now I want to find a column that is MAR. I will select `CAUSE.CATEGORY.DETAIL` because I believe it depends on `CAUSE.CATEGORY`, since there might not be a need for more detail if the category is sufficient enough.
