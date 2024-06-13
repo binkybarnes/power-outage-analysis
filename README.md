@@ -53,10 +53,25 @@ Let's look at the `OUTAGE.DURATION` distribution since that is what we are tryin
   frameborder="0"
 ></iframe>
 
+There are very big outliers, but not many of them. I consider dropping them later down.
+
 I had a strong feeling that the outage cause category would be significant in predicting outage duration. Let's look at a barplot of outage causes.
 
 <iframe
   src="assets/uni-plot2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Severe weather and intentional attacks are the most common causes for outages by a lot.
+
+### Bivariate Analysis
+
+I wanted to observe any possible correlation between `CAUSE.CATEOGORY` and outage duration
+
+<iframe
+  src="assets/bi-plot1.html"
   width="800"
   height="600"
   frameborder="0"
