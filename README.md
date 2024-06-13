@@ -156,7 +156,7 @@ I will test whether the cause category detail of coal and hurricanes have the sa
 
 **Test Statistic**: Difference in means of `OUTAGE.DURATION` of the two groups.
 
-The observed difference in means was -18228.944, with a p-value of 0.
+The observed difference in means was -18228.944, with a p-value of 0. We reject the null hypothesis and can conclude that, on average, the outage duration for coal is greater than hurricanes.
 
 <iframe
   src="assets/hypo-plot1.html"
