@@ -76,3 +76,5 @@ I wanted to observe any possible correlation between `CAUSE.CATEOGORY` and outag
   height="600"
   frameborder="0"
 ></iframe>
+
+Severe weather seems to have a very concentrated distribution with high outage durations. Also, Intentional attack has the widest distribution.
