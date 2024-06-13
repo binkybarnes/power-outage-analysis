@@ -143,3 +143,24 @@ Now I want to find a column's whose missingess is not dependent on another colum
 ></iframe>
 
 Observed difference in mean 0.08070380363253488, with a p-value of 1.0. Therefore we can say that the missingness of `DEMAND.LOSS.MW` is not dependent on `RES.PERCEN`.
+
+## Hypothesis Testing
+
+### Permutation Test
+
+I will test whether the cause category detail of coal and hurricanes have the same outage duration averages. I will perform a permutation test.
+
+**Null**: The average of `OUTAGE.DURATION` for `CAUSE.CATEGORY.DETAIL_Coal` and `CAUSE.`CATEGORY.DETAIL_hurricanes` is the same
+
+**Alterantive**: The average of `OUTAGE.DURATION` for `CAUSE.CATEGORY.DETAIL_Coal` is greater than the average with `CAUSE.CATEGORY.DETAIL_hurricanes`
+
+**Test Statistic**: Difference in means of `OUTAGE.DURATION` of the two groups.
+
+The observed difference in means was -18228.944, with a p-value of 0.
+
+<iframe
+  src="assets/hypo-plot1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
