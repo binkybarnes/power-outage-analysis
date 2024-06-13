@@ -1,5 +1,7 @@
 # Predicting Outage Duration
 
+By Brandon Chiou
+
 ## Introduction
 
 ### Introduction and Question Identification
