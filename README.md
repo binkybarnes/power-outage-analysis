@@ -78,3 +78,16 @@ I wanted to observe any possible correlation between `CAUSE.CATEOGORY` and outag
 ></iframe>
 
 Severe weather seems to have a very concentrated distribution with high outage durations. Also, Intentional attack has the widest distribution.
+
+Let's visualize the average outage duration for each state.
+
+<iframe
+  src="assets/bi-plot2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Looks like east mid west has longer outages.
+
+### Interesting Aggregates
