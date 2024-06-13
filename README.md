@@ -164,3 +164,13 @@ The observed difference in means was -18228.944, with a p-value of 0. We reject 
   height="600"
   frameborder="0"
 ></iframe>
+
+## Framing a Prediction Problem
+
+### Problem Identification
+
+I will make a model to predict the severity (in terms of outage duration) of a major power outage. This will be a regression problem because outage duration is in continuous minutes.
+
+I will use mean absolute error, because as we saw above, the outliers for outage duration are very severe. I am using absolute error since I would like this metric to be more robust against outliers.
+
+At the of our prediction, we would not know the start and restoration of outages, demand loss, and customers affected. The rest of the data is likely to be available.
