@@ -171,6 +171,22 @@ The observed difference in means was -18228.944, with a p-value of 0. We reject 
 
 I will make a model to predict the severity (in terms of outage duration) of a major power outage. This will be a regression problem because outage duration is in continuous minutes.
 
-I will use mean absolute error, because as we saw above, the outliers for outage duration are very severe. I am using absolute error since I would like this metric to be more robust against outliers.
+I will use mean absolute error, because as we saw above, the outliers for outage duration are very severe. I am using absolute error since I would like this metric to be more robust against outliers. If I used R<sup>2</sup> or RMSE, then the minimizing error would be more heavily swayed by the big outliers.
 
 At the of our prediction, we would not know the start and restoration of outages, demand loss, and customers affected. The rest of the data is likely to be available.
+
+## Baseline Model
+
+### RandomForestRegressor
+
+First I had to fix the data to prepare it for the model. There were a lot of missing values, so I used probabilistic imputation to fill them in.
+
+Next, I had to OneHotEncode the categorical features so they can be used as features.
+
+Now that the data is ready, I choose my features to be `CAUSE.CATEGORY.DETAIL_coal` and `CAUSE.CATEGORY_severe weather`. These two are nominal categorical features, which I performed OneHotEncoding on. I chose these two features based on my previous analysis in the steps above.
+
+I trained the random forest and got a mean absolute error of 1835.537. I do not belive this is a very good model, since the standard deviation of outage duration is not very large. Also 1800 minutes is 30 hours, which might be too large of a time gap.
+
+## Final Model
+
+### Feature Selection and Grid CV
